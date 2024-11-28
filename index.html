@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Google Meet</title>
+
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            
+        }
+        .main-cantainer{
+            width: 25%;
+            position: fixed;
+            right: 0px;
+            padding: 20px 50px;
+            background-color: rgb(154, 152, 152);
+        }
+        #search{
+            width: 280px;
+            height: 40px;
+            margin-top: 20px;
+            margin-bottom: 30px;
+            border-radius: 5px;
+        }
+        .student-card{
+           width: 280px;
+            background-color: white;
+            margin-top: 12px;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid grey;
+           
+        }
+        .googlemeet-ui{
+            width:100% ;
+            height: 100vh;
+            background-color: rgb(28, 28, 28);
+            display: flex;
+            flex-wrap: wrap;
+            text-align: center;
+            align-items: space-evenly;
+            
+        
+        }
+        .user{
+            height: 350px;
+            width: 550px;
+            border: 1px solid black;
+            columns: white;
+            background-color: azure;
+            margin-left: 15px;
+            margin-top: 10px;
+            text-align: center;
+            border-radius: 5px;
+            
+        }
+        #one{
+            background-color: rgb(89, 69, 106);
+
+     }
+     #two{
+            background-color: rgb(44, 72, 44);
+
+     }
+     #three{
+            background-color: rgb(75, 73, 73);
+
+     }
+     #four{
+            background-color: rgb(69, 64, 138);
+
+     }
+    </style>
+</head>
+<body>
+    <div class="main-cantainer">
+    <h1 style="text-align: center;">Students</h1>
+    <input type="text" id="search" placeholder="search.." onkeyup="LoadSearchResult()"/>
+
+    <div id="student-cantainer">
+
+    </div>
+    </div>
+
+    <div class="googlemeet-ui">
+        <div class="user" id="one"></div>
+        <div class="user" id="two"></div><br/>
+        <div class="user" id="three"></div>
+        <div class="user" id="four"></div>
+
+    </div>
+
+    <script>
+        const students = [
+            "Apoorva",
+            "Anaya",
+            "Priya",
+            "Rahul",
+            "Shivam",
+            "Suresh",
+            "Vasim",
+            "Vinay",
+            "Yash",
+            "Alok",
+            "Ankit",
+           
+            
+            
+        ]
+
+        const studentsCantainer = document.getElementById("student-cantainer");
+
+        students.forEach((stud)=>{
+            studentsCantainer.innerHTML += `<div class ="student-card"> ${stud} </div>`
+
+ })
+
+ function LoadSearchResult() {
+    const inputElement = document.getElementById("search");
+    const searchText = inputElement.value.toLowerCase();
+
+    studentsCantainer.innerHTML = '';
+   
+    const filteredStudents = students.filter((stud)=>{
+        if(stud.toLowerCase().includes(searchText)){
+            return true;
+        }
+    })
+    
+    filteredStudents.forEach((stud)=>{
+            studentsCantainer.innerHTML += `<div class ="student-card"> ${stud} </div>`
+    })
+
+
+    
+    
+    
+ } 
+    </script>
+    
+</body>
+</html>
